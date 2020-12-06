@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudiante</title>
+    <link rel="stylesheet" href="node_modules/bulma/css/bulma.min.css">
+    <link rel="stylesheet" href="diseños/estudiante.css">
+    <script src="node_modules/axios/dist/axios.min.js"></script>
+    <style>
+        body{
+            background-image: url("Imagenes/fondoescuela.png");
+            background-size: cover;
+        }
+        .encabezado2{
+            background-image: url("Imagenes/fondoescuela.png");
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <header class="encabezado2">
+        <div class="columns">
+            <div class="column">
+                <figure class="image is-128x128">
+                    <img class="is-rounded" src="Imagenes/Logoprimitivo.png">
+                </figure>
+            </div>
+            <div class="column" id="titulohead2">
+              ESCUELA PRIMITIVO ALONSO IMEE CAMPESTREE
+            </div>
+            <div class="column">
+              </div>
+        </div>
+    </header>
+
+    <h1 id="titulo">BIENVENIDO A LA PÁGINA DE LA ESCUELA PRIMITIVO ALONSO IMEE CAMPESTREE</h1>
+    <br>
+    
+    <p class="subtitulos">Favor de registrarte o de iniciar sesión con alguna cuenta existente</p>
+    <br>
+
+    <p id="datos">INGRESA TUS DATOS COMO ESTUDIANTE:</p>
+    <br>
+
+    <p class="subtitulos">Número de usuario de los estudiantes: 2</p>
+    <br>
+    <div class="card card-width='100'" id="CardFormulario">
+        <header class="card-header">
+          <p class="card-header-title">
+            Formulario de estudiante:
+          </p>
+        </header>
+        <div class="card-content">
+          <div class="content">
+            <form action="api/index.php/estudiantes" method="POST">
+                <label for="nombre_estudiante">Nombre completo:</label>
+                <input id="nombre_estudiante" class="input is-rounded" type="text" name="nombre_estudiante" placeholder="Nombre">
+                <label for="correo_electronico">Correo electronico:</label>
+                <input id="correo_electronico" class="input is-rounded" type="text" name="correo_electronico" placeholder="Correo electronico">
+                <label for="idusuarios">Número de usuario:</label>
+                <input id="idusuarios" class="input is-rounded" type="text" name="idusuarios" placeholder="id de usuario">
+                <div id="botones">
+                    <button type="button" class="button is-dark" onclick="estudiantes()">Guardar datos</button>
+                </div>
+            </form>
+          </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <script>
+        function estudiantes (){
+            axios.post('api/index.php/estudiantes', {
+                nombre_estudiante: document.forms[0].nombre_estudiante.value,
+                correo_electronico: document.forms[0].correo_electronico.value,
+                idusuarios: document.forms[0].idusuarios.value
+            }).then(resp => {
+                alert(`Se han insertado correctamente los datos uwu\n vamos a ver las calificaciones`)
+                setTimeout(`location. href='consultar_estudiante.html'`, 500)
+                console.log(resp)
+            }).catch(error => {
+                alert(`Los datos no se han ingresado correctamente, vuelva a intentarlo`)
+            });
+        }
+    </script>
+    
+    
+</body>
+</html>

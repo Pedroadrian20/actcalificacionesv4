@@ -1,0 +1,70 @@
+header{
+    width: 100%;
+}
+
+/*Encabezado de la página de registro de las calificaciones*/
+.encabezado3{
+    border: solid 1px;
+    border-color: white;
+    padding: 10px;
+}
+
+/*Titulo del header*/
+#titulohead3{
+    font-family: cursive;
+    font-size: 20px;
+    color: black;
+    text-align: center;
+
+}
+
+/*Titulo de página*/
+#titulo{
+    font-size: 20px;
+    color: black;
+    text-align: center;
+    font-family: cursive;
+    padding: 10px;
+}
+
+/*Subtitulos de página*/
+.subtitulos{
+    font-size: 18px;
+    color: black;
+    text-align: left;
+    font-family: cursive;
+    margin-left: 15px;
+    padding: 5px;
+}
+
+/*Card del formulario de estudiante*/
+#CardFormulario{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+/*Subtitulo del formulario*/
+#datos{
+    font-size: 18px;
+    color: black;
+    text-align: left;
+    font-family: cursive;
+    margin-left: 15px;
+    padding: 5px;
+}
+
+/*Botones de guardar datos y regresar a la pagina principal*/
+#botones{
+    padding: 10px;
+}
+
+/*consulta*/
+.consulta{
+    margin-left: 15px;
+}
+
+/*tablacalificaciones*/
+#tablacalificaciones{
+    margin-right: 15px;
+
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regisro de Asignaturas</title>
+    <link rel="stylesheet" href="node_modules/bulma/css/bulma.min.css">
+    <link rel="stylesheet" href="diseños/calificacion.css">
+    <script src="node_modules/axios/dist/axios.min.js"></script>
+    <style>
+        body{
+            background-image: url("Imagenes/fondoescuela.png");
+            background-size: cover;
+        }
+        .encabezado3{
+            background-image: url("Imagenes/fondoescuela.png");
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <header class="encabezado3">
+        <div class="columns">
+            <div class="column">
+                <figure class="image is-128x128">
+                    <img class="is-rounded" src="Imagenes/Logoprimitivo.png">
+                </figure>
+            </div>
+            <div class="column" id="titulohead3">
+              ESCUELA PRIMITIVO ALONSO IMEE CAMPESTREE
+            </div>
+            <div class="column">
+              </div>
+        </div>
+    </header>
+
+    <h1 id="titulo">BIENVENIDO AQUI PODRA REALIZAR EL REGISTRO DE LAS ASIGNATURAS</h1>
+    <br>
+    
+    <p class="subtitulos">Ingresar las asignaturas para las calificaciones</p>
+    <br>
+
+    <p id="datos">INGRESA LAS ASIGNATURAS:</p>
+    <br>
+    <div class="card card-width='100'" id="CardFormulario">
+        <header class="card-header">
+          <p class="card-header-title">
+            Formulario de registro de asignaturas:
+          </p>
+        </header>
+        <div class="card-content">
+          <div class="content">
+            <form action="api/index.php/asignaturas" method="POST">
+                <label for="nombre_asignatura">Nombre de la asignatura:</label>
+                <input id="nombre_asignatura" class="input is-rounded" type="text" name="nombre_asignatura" placeholder="Asignatura">
+                <div id="botones">
+                    <button type="button" class="button is-dark" onclick="asignaturas()">Guardar datos</button>
+                </div>
+            </form>
+          </div>
+        </div>
+    </div>
+    <br>
+    <br>
+
+    <script>
+        function asignaturas (){
+            axios.post('api/index.php/asignaturas', {
+                nombre_asignatura: document.forms[0].nombre_asignatura.value
+            }).then(resp => {
+                alert(`Se han insertado correctamente los datos de las asignaturas\nInsertemos las calificaciones`)
+                setTimeout(`location. href='insertar_calificaciones.php'`, 500)
+                console.log(resp)
+            }).catch(error => {
+                alert(`Los datos no se han ingresado correctamente, vuelva a intentarlo`)
+            });
+        }
+    </script>
+    
+</body>
+</html>
